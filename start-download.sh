@@ -1,12 +1,13 @@
 #!/bin/bash
 
-wget https://gist.githubusercontent.com/mattzab/14f29795a44e04611f343907001ae1fc/raw/68e2688ca086346d4d463d37d1bab4289dcd417b/continue-librivox-download.sh
-mkdir 'librivox.org'
-cd 'librivox.org'
+wget https://raw.githubusercontent.com/mattzab/librivox-dl/master/continue-download.sh
+mkdir 'Librivox Download'
+cd 'Librivox Download'
 echo Download updated Book Listing
-wget -O list1.xml "https://librivox.org/api/feed/audiobooks/?offset=0&limit=10000&fields=%7Blanguage,authors,title,url_zip_file%7B"
-wget -O list2.xml "https://librivox.org/api/feed/audiobooks/?offset=10000&limit=10000&fields=%7Blanguage,authors,title,url_zip_file%7B"
-
+wget -O list1.xml "https://librivox.org/api/feed/audiobooks/?offset=0&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
+wget -O list2.xml "https://librivox.org/api/feed/audiobooks/?offset=5000&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
+wget -O list3.xml "https://librivox.org/api/feed/audiobooks/?offset=10000&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
+wget -O list4.xml "https://librivox.org/api/feed/audiobooks/?offset=15000&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
 
 echo
 echo Cleaning up XML file to be used with Wget...
@@ -44,7 +45,7 @@ echo
 echo remove ampersand from titles
 sed -i 's,&amp;,And,g' *.xml
 echo
-echo replace colon with period in verses
+echo replace colon with period
 sed -i -- 's,:,.,g' *.xml
 echo
 echo restore the colon in url addresses
