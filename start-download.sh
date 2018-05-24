@@ -1,8 +1,8 @@
 #!/bin/bash
 
 downloadto="~/repo/librivox.org"
-mkdir 'Librivox Download'
-cd 'Librivox Download'
+mkdir libdltmp
+cd libdltmp
 wget https://raw.githubusercontent.com/mattzab/librivox-dl/master/continue-download.sh
 echo Download updated Book Listing
 wget -O list1.xml "https://librivox.org/api/feed/audiobooks/?offset=0&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
@@ -71,4 +71,4 @@ echo cleanup white space
 sed -i '/^$/d' *.xml
 echo
 cd $downloadto
-sh "~/Librivox Download/continue-download.sh"
+sh ~/libdltmp/continue-download.sh
