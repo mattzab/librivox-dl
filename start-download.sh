@@ -1,8 +1,9 @@
 #!/bin/bash
 
-wget https://raw.githubusercontent.com/mattzab/librivox-dl/master/continue-download.sh
+downloadto="~/repo/librivox.org"
 mkdir 'Librivox Download'
 cd 'Librivox Download'
+wget https://raw.githubusercontent.com/mattzab/librivox-dl/master/continue-download.sh
 echo Download updated Book Listing
 wget -O list1.xml "https://librivox.org/api/feed/audiobooks/?offset=0&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
 wget -O list2.xml "https://librivox.org/api/feed/audiobooks/?offset=5000&limit=5000&fields=%7Blanguage,authors,title,url_zip_file%7B"
@@ -69,4 +70,5 @@ echo
 echo cleanup white space
 sed -i '/^$/d' *.xml
 echo
-sh ../continue-download.sh
+cd $downloadto
+sh "~/Librivox Download/continue-download.sh"
