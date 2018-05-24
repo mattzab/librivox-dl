@@ -69,4 +69,4 @@ echo
 echo cleanup white space
 sed -i '/^$/d' *.xml
 echo
-sh ../continue-librivox-download.sh
+sh ../continue-download.sh
